@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+- ../base
+patches:
+- deployment.yaml
+
+nameSuffix: -test
+commonLabels:
+  app: backend-app-test
+
+images:
+  - name: centos
+    newTag: x.x.x  # 애플리케이션 버전 번호
+    newName: <yourregistry_name>  # ECR 레지스트리 URI
